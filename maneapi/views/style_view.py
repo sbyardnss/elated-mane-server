@@ -3,7 +3,7 @@ from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from django.contrib.auth.models import User
-from maneapi.models import HairStyle
+from maneapi.models import HairStyle, Customer
 
 
 class StyleView(ViewSet):
@@ -29,10 +29,14 @@ class StyleView(ViewSet):
         serialized = StyleSerializer(styles, many=True)
         return Response(serialized.data)
 
+class CustomerStyleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer()
+        fields = ('id', 'name')
 
 class StyleSerializer(serializers.ModelSerializer):
     """JSON serializer for style creator"""
-
+    clients = CustomerStyleSerializer(many=True)
     class Meta:
         """JSON serializer for style creator"""
         model = HairStyle

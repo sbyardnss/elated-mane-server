@@ -15,7 +15,7 @@ router.register(r'stylists', StylistView, 'stylist')
 router.register(r'customers', CustomerView, 'customer')
 router.register(r'appointments', AppointmentView, 'appointment')
 router.register(r'equipment', EquipmentView, 'equipment')
-router.register(r'equipmenttypes', EquipmentTypeView, 'equipmenttype')
+router.register(r'equipment_types', EquipmentTypeView, 'equipmenttype')
 router.register(r'styles', StyleView, 'style')
 
 urlpatterns = [
